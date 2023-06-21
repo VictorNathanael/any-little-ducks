@@ -1,5 +1,4 @@
 import './App.css';
-
 function App() {
     return (
         <div className='App'>
@@ -9,6 +8,7 @@ function App() {
                 <input type='number' name='number-of-ducks' />
             </div>
             <button>confirmar</button>
+            <FiveLittleDucks />
         </div>
     );
 }
