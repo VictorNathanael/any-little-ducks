@@ -3,19 +3,39 @@
 }
 .App {
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.App h1 {
+    margin: 10px;
+    margin-top: 5%;
+    color: gold;
 }
 
 #input-ducks {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 5%;
 }
 
 #input-ducks input {
     max-width: 200px;
     margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    border: 1px solid rgb(102, 102, 102);
 }
 
 #input-ducks button {
     align-items: center;
+    padding-inline: 10px;
+    /* background-color: rgb(122, 218, 221); */
+    /* border: 1px solid rgb(102, 102, 102); */
+}
+
+h3 {
+    margin: 5%;
 }
