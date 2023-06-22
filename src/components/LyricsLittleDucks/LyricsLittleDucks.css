@@ -1,0 +1,10 @@
+.LyricsLittleDucks {
+    text-align: start;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.LyricsLittleDucks p {
+    max-width: 200px;
+}
