@@ -16,13 +16,16 @@ export function LyricsLittleDucks(props) {
     }
 
     function parsePlural(word, amount) {
-        const index = amount === 1 ? 0 : 1;
-        return listWords.find((item) => item[0] === word)[index];
+        if (listWords[word]) {
+            const index = amount === 1 ? 0 : 1;
+            return listWords[word][index];
+        }
+
+        return word;
     }
 
     const firstPart = () => {
         if (totalDucks && totalDucks > 0) {
-            const firstPart = document.getElementById('first-part');
             let text = '';
             for (let i = 0; i < totalDucks; i++) {
                 const currentDucks = totalDucks - i;
@@ -50,44 +53,50 @@ export function LyricsLittleDucks(props) {
                     `;
                 }
             }
-            firstPart.innerHTML = text;
+
+            return text;
         }
     };
 
     return (
         <div className='LyricsLittleDucks'>
-            <div id='lyrics' hidden>
-                <p id='first-part'>{firstPart()}</p>
-
-                <p id='final-part'>
-                    A mamãe gritou <br />
-                    Quá, quá, quá, quá <br />
-                    Mas nenhum patinho <br />
-                    Voltou de lá <br />
-                    Puxa! <br />
-                    <br />
-                    A mamãe patinha <br />
-                    Ficou tão triste naquele dia <br />
-                    Aonde será que{' '}
-                    {parsePlural('estava seu filhotinho', totalDucks)}
-                    ? <br />
-                    Mas essa história vai ter um final feliz <br />
-                    Sabe por quê? <br />
-                    <br />
-                    A mamãe patinha <br />
-                    Foi procurar <br />
-                    Além das montanhas <br />
-                    Na beira do mar <br />
-                    <br />
-                    A mamãe gritou <br />
-                    Quá, quá, quá, quá! <br />E {parsePlural(
-                        'o',
-                        totalDucks
-                    )}{' '}
-                    {totalDucks > 1 ? extenso(totalDucks) : ''}
-                    {parsePlural('patinho', totalDucks)} <br />
-                    {parsePlural('Voltou', totalDucks)} de lá <br />
-                </p>
+            <div id='lyrics'>
+                {totalDucks > 0 && props.showResult && (
+                    <p id='first-part'>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: firstPart() }}
+                        ></div>
+                    </p>
+                )}
+                {props.showResult && (
+                    <p id='final-part'>
+                        A mamãe gritou <br />
+                        Quá, quá, quá, quá <br />
+                        Mas nenhum patinho <br />
+                        Voltou de lá <br />
+                        Puxa! <br />
+                        <br />
+                        A mamãe patinha <br />
+                        Ficou tão triste naquele dia <br />
+                        Aonde será que{' '}
+                        {parsePlural('estava seu filhotinho', totalDucks)}
+                        ? <br />
+                        Mas essa história vai ter um final feliz <br />
+                        Sabe por quê? <br />
+                        <br />
+                        A mamãe patinha <br />
+                        Foi procurar <br />
+                        Além das montanhas <br />
+                        Na beira do mar <br />
+                        <br />
+                        A mamãe gritou <br />
+                        Quá, quá, quá, quá! <br />E{' '}
+                        {parsePlural('o', totalDucks)}{' '}
+                        {totalDucks > 1 ? extenso(totalDucks) : ''}{' '}
+                        {parsePlural('patinho', totalDucks)} <br />
+                        {parsePlural('Voltou', totalDucks)} de lá <br />
+                    </p>
+                )}
             </div>
         </div>
     );
