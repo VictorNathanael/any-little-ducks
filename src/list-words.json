@@ -1,7 +1,10 @@
-[
-    ["patinho", "patinhos"],
-    ["Foi", "Foram"],
-    ["estava seu filhotinho", "estavam seus filhotinhos"],
-    ["o", "os"],
-    ["Voltou", "Voltaram"]
-]
+{
+    "patinho": ["patinho", "patinhos"],
+    "Foi": ["Foi", "Foram"],
+    "estava seu filhotinho": [
+        "estava seu filhotinho",
+        "estavam seus filhotinhos"
+    ],
+    "o": ["o", "os"],
+    "Voltou": ["Voltou", "Voltaram"]
+}
