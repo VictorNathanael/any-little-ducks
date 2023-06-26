@@ -3,28 +3,25 @@ import './App.css';
 import { LyricsLittleDucks } from './components/LyricsLittleDucks/LyricsLittleDucks';
 
 function App() {
-    const [numberOfDucks, setNumberOfDucks] = useState(0);
+    const [quantityDucks, setQuantityDucks] = useState(0);
+    const [showResult, setShowResult] = useState(false);
+    const [showError, setShowError] = useState(false);
 
     const handleChange = (e) => {
-        const numberOfDucks = e.target.value;
-        setNumberOfDucks(numberOfDucks);
-        showOrHidden('lyrics', 'hidden');
-    };
-
-    const handleClick = () => {
-        if (numberOfDucks >= 1 && numberOfDucks) {
-            showOrHidden('noDucks', 'hidden');
-            showOrHidden('lyrics', 'show');
-        } else {
-            showOrHidden('noDucks', 'show');
+        if (!e.target.value.includes('e')) {
+            setQuantityDucks(e.target.value);
+            setShowResult(false);
+            setShowError(false);
         }
     };
 
-    function showOrHidden(id, showOrHidden) {
-        if (showOrHidden === 'show') showOrHidden = false;
-        if (showOrHidden === 'hidden') showOrHidden = true;
-        return (document.getElementById(id).hidden = showOrHidden);
-    }
+    const handleClick = () => {
+        if (quantityDucks >= 1) {
+            setShowResult(true);
+        } else {
+            setShowError(true);
+        }
+    };
 
     return (
         <div className='App'>
@@ -34,16 +31,16 @@ function App() {
                 <input
                     id='quantity-ducks'
                     type='number'
-                    name='number-of-ducks'
                     placeholder='Insira um número'
                     onChange={handleChange}
                 />
                 <button onClick={handleClick}>Confirmar</button>
             </div>
-            <h3 id='noDucks' hidden>
-                Nenhum patinho foi passear :(
-            </h3>
-            <LyricsLittleDucks totalDucks={numberOfDucks} />
+            {showError && <h3 id='noDucks'>Nenhum patinho foi passear :(</h3>}
+            <LyricsLittleDucks
+                totalDucks={quantityDucks}
+                showResult={showResult}
+            />
         </div>
     );
 }
