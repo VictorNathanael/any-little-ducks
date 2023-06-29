@@ -1,0 +1,13 @@
+.LyricsLittleDucks {
+    display: flex;
+    text-align: start;
+    margin: 40px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.paragraph {
+    margin-bottom: 35px;
+    width: 280px;
+}

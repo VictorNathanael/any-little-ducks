@@ -4,15 +4,15 @@ import extenso from 'extenso';
 import listWords from '../../list-words.json';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-export function LyricsLittleDucks(props) {
+function LyricsLittleDucks(props) {
     const totalDucks = Number(props.totalDucks);
     const [loadedContent, setLoadedContent] = useState([]);
     const itemsPerLoad = 20;
 
     function upFirstLetter(number) {
         let fullNumber = number;
-        if (number && number > 0) {
-            fullNumber = extenso(number);
+        if (fullNumber && fullNumber > 0) {
+            fullNumber = extenso(fullNumber);
             return (fullNumber =
                 fullNumber[0].toUpperCase() + fullNumber.substring(1));
         }
@@ -127,3 +127,5 @@ export function LyricsLittleDucks(props) {
         </div>
     );
 }
+
+export default LyricsLittleDucks;
