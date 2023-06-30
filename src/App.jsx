@@ -25,7 +25,7 @@ function App() {
     const handleDebouncedInputChange = debounce(handleInputChange, 300);
 
     const handleClick = () => {
-        if (quantityDucks >= 1) {
+        if (quantityDucks >= 1 && quantityDucks <= 1000000) {
             setPageFeedback(pageFeedbackTypes.result);
         } else {
             setPageFeedback(pageFeedbackTypes.error);
@@ -41,7 +41,7 @@ function App() {
                         <img
                             src={patinhoChorando}
                             alt='imagem de um patinho amarelo chorando'
-                            width={'180px'}
+                            width={'220px'}
                         />
                     </div>
                 );
@@ -64,6 +64,11 @@ function App() {
                     allowedDecimalSeparators={false}
                     decimalScale={0}
                 />
+                {inputError && (
+                    <p className={'text-error'}>
+                        Digite um número de 1 a 1.000.000
+                    </p>
+                )}
                 <button onClick={handleClick}>Confirmar</button>
             </div>
             {buildContent()}
