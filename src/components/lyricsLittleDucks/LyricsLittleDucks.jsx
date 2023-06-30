@@ -121,7 +121,7 @@ function LyricsLittleDucks(props) {
                 next={loadMoreContent}
                 hasMore={loadedContent.length < totalDucks}
             >
-                {loadedContent.map((content) => content)}
+                {loadedContent}
             </InfiniteScroll>
             {loadedContent.length === totalDucks && getFinal()}
         </div>
