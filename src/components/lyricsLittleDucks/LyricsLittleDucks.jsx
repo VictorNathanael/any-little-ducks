@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './LyricsLittleDucks.css';
 import extenso from 'extenso';
 import listWords from '../../list-words.json';
@@ -27,7 +27,7 @@ function LyricsLittleDucks(props) {
         return word;
     }
 
-    const getVerseForNDucks = (index) => {
+    const getVerseForNDucks = useCallback((index) => {
         return (
             <React.Fragment key={index}>
                 <div className='paragraph'>
@@ -49,7 +49,7 @@ function LyricsLittleDucks(props) {
                 )}
             </React.Fragment>
         );
-    };
+    }, []);
 
     const getFinal = () => {
         return (
@@ -91,21 +91,21 @@ function LyricsLittleDucks(props) {
         );
     };
 
-    const getSong = () => {
+    const getSong = useCallback(() => {
         const texts = [];
         for (let i = totalDucks; i > 0; i--) {
             texts.push(getVerseForNDucks(i));
         }
 
         return texts;
-    };
+    }, [totalDucks, getVerseForNDucks]);
 
     useEffect(() => {
         if (totalDucks > 0) {
             const nextContent = getSong().slice(0, itemsPerLoad);
             setLoadedContent(nextContent);
         }
-    }, []);
+    }, [getSong, totalDucks]);
 
     const loadMoreContent = () => {
         const nextIndex = loadedContent.length + 1;
