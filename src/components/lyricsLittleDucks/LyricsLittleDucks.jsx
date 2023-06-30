@@ -105,7 +105,7 @@ function LyricsLittleDucks(props) {
             const nextContent = getSong().slice(0, itemsPerLoad);
             setLoadedContent(nextContent);
         }
-    }, [totalDucks]);
+    }, []);
 
     const loadMoreContent = () => {
         const nextIndex = loadedContent.length + 1;
