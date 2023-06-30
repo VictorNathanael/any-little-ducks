@@ -25,7 +25,7 @@ function App() {
     const handleDebouncedInputChange = debounce(handleInputChange, 300);
 
     const handleClick = () => {
-        if (quantityDucks >= 1 && quantityDucks <= 100000) {
+        if (quantityDucks >= 1) {
             setPageFeedback(pageFeedbackTypes.result);
         } else {
             setPageFeedback(pageFeedbackTypes.error);
@@ -64,11 +64,6 @@ function App() {
                     allowedDecimalSeparators={false}
                     decimalScale={0}
                 />
-                {inputError && (
-                    <p className={'text-error'}>
-                        Digite um número de 1 a 100.000
-                    </p>
-                )}
                 <button onClick={handleClick}>Confirmar</button>
             </div>
             {buildContent()}
