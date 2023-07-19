@@ -15,24 +15,47 @@ html {
     text-align: center;
 }
 
-h1 {
-    font-size: 40px;
-    padding-top: 30px;
+header {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: #87ceeb;
     color: rgb(255, 217, 0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: center;
 }
 
-.container-input {
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-container h1 {
+    font-size: 40px;
+    margin-right: 60px;
+}
+
+.switch {
+    margin-top: 5px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.main-container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 90px;
 }
 
-.container-input p:first-child {
+.main-container span:first-child {
+    margin-top: 50px;
     font-size: 18px;
 }
 
-.container-input input {
+.main-container input {
     max-width: 180px;
     margin-top: 10px;
     font-size: 16px;
@@ -42,13 +65,13 @@ h1 {
     height: 15px;
 }
 
-.container-input input:focus {
+.main-container input:focus {
     outline: none;
     border-color: #f4c430;
     box-shadow: 0 0 5px #f4c430;
 }
 
-.container-input #btnConfirm {
+.main-container #btn-confirm {
     margin-top: 10px;
     align-items: center;
     padding: 4px 10px;
@@ -60,7 +83,7 @@ h1 {
     transition: background-color 500ms;
 }
 
-.container-input #btnConfirm:hover {
+.main-container #btn-confirm:hover {
     background-color: #cc5d02;
     border: 1px solid #d99c0b;
 }
@@ -69,11 +92,11 @@ h4 {
     margin-top: 20px;
 }
 
-.container-input .input-error {
+.main-container .input-error {
     border: 2px solid #ff0000;
 }
 
-.container-input .input-error:focus {
+.main-container .input-error:focus {
     border-color: #ff0000;
     box-shadow: 0 0 5px #ff0000;
 }
@@ -84,4 +107,16 @@ h4 {
     font-size: 12px;
     text-align: start;
     margin-top: 2px;
+}
+
+@media (max-width: 1023px) {
+    .header-container h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container h1 {
+        font-size: 25px;
+    }
 }
