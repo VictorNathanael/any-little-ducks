@@ -1,7 +1,7 @@
 .LyricsLittleDucks {
     display: flex;
     text-align: start;
-    margin: 40px;
+    margin-top: 40px;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
