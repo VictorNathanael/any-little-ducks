@@ -19,7 +19,7 @@
 
 .scroll-to-top-button.show {
     display: flex;
-    padding-top: 2%;
+    padding-top: 16px;
 }
 
 .scroll-to-top-button:hover {
