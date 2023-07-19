@@ -1,0 +1,18 @@
+#light {
+    background-color: #f1f1f1;
+}
+
+#dark {
+    background-color: #121212;
+    .container-input {
+        color: #f1f1f1;
+    }
+}
+
+#dark > div.LyricsLittleDucks {
+    color: #f1f1f1;
+}
+
+#dark > div.container-input > button.scroll-to-top-button.show {
+    background-color: rgb(116, 116, 116);
+}
