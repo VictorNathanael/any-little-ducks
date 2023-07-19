@@ -4,15 +4,19 @@
 
 #dark {
     background-color: #121212;
-    .container-input {
+    .main-container {
         color: #f1f1f1;
     }
+}
+
+#dark header {
+    background-color: #333333;
 }
 
 #dark > div.LyricsLittleDucks {
     color: #f1f1f1;
 }
 
-#dark > div.container-input > button.scroll-to-top-button.show {
+#dark > div.main-container > button.scroll-to-top-button.show {
     background-color: rgb(116, 116, 116);
 }
