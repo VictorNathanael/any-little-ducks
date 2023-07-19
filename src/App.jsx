@@ -4,6 +4,8 @@ import LyricsLittleDucks from './components/lyricsLittleDucks/LyricsLittleDucks'
 import { debounce } from 'lodash';
 import patinhoChorando from './assets/patinho-chorando.png';
 import { NumericFormat } from 'react-number-format';
+import ButtonToTop from './components/buttonToTop/ButtonToTop';
+import SwitchTheme from './components/switchTheme/SwitchTheme';
 
 const pageFeedbackTypes = {
     none: 'none',
@@ -15,6 +17,7 @@ function App() {
     const [quantityDucks, setQuantityDucks] = useState(0);
     const [pageFeedback, setPageFeedback] = useState(pageFeedbackTypes.none);
     const [inputError, setInputError] = useState(false);
+    const [theme, setTheme] = useState('light');
 
     const handleInputChange = (e) => {
         setQuantityDucks(e.target.value);
@@ -53,8 +56,9 @@ function App() {
     }
 
     return (
-        <div className='App'>
-            <h1>{'Any Little Ducks'}</h1>
+        <div className='App' id={theme}>
+            <h1>Any Little Ducks</h1>
+            <SwitchTheme theme={theme} setTheme={setTheme} />
             <div className='container-input'>
                 <p>Quantos patinhos foram passear?</p>
                 <NumericFormat
@@ -69,7 +73,10 @@ function App() {
                         Digite um número de 1 a 1.000.000
                     </p>
                 )}
-                <button onClick={handleClick}>Confirmar</button>
+                <button id='btnConfirm' onClick={handleClick}>
+                    Confirmar
+                </button>
+                <ButtonToTop />
             </div>
             {buildContent()}
         </div>
