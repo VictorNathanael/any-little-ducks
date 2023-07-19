@@ -30,6 +30,12 @@ function App() {
     const handleClick = () => {
         if (quantityDucks >= 1 && quantityDucks <= 1000000) {
             setPageFeedback(pageFeedbackTypes.result);
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 190,
+                    behavior: 'smooth',
+                });
+            }, 100);
         } else {
             setPageFeedback(pageFeedbackTypes.error);
             setInputError(true);
@@ -57,10 +63,14 @@ function App() {
 
     return (
         <div className='App' id={theme}>
-            <h1>Any Little Ducks</h1>
-            <SwitchTheme theme={theme} setTheme={setTheme} />
-            <div className='container-input'>
-                <p>Quantos patinhos foram passear?</p>
+            <header>
+                <div className='header-container'>
+                    <h1>Any Little Ducks</h1>
+                    <SwitchTheme theme={theme} setTheme={setTheme} />
+                </div>
+            </header>
+            <div className='main-container'>
+                <span>Quantos patinhos foram passear?</span>
                 <NumericFormat
                     className={inputError ? 'input-error' : ''}
                     type='number'
@@ -69,11 +79,11 @@ function App() {
                     decimalScale={0}
                 />
                 {inputError && (
-                    <p className={'text-error'}>
+                    <span className={'text-error'}>
                         Digite um número de 1 a 1.000.000
-                    </p>
+                    </span>
                 )}
-                <button id='btnConfirm' onClick={handleClick}>
+                <button id='btn-confirm' onClick={handleClick}>
                     Confirmar
                 </button>
                 <ButtonToTop />
