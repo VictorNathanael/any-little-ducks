@@ -108,9 +108,9 @@ function LyricsLittleDucks(props) {
     }, [getSong, totalDucks]);
 
     const loadMoreContent = () => {
-        const nextIndex = loadedContent.length + 1;
-        const end = nextIndex + itemsPerLoad - 1;
-        const newContent = getSong().slice(nextIndex - 1, end);
+        const nextIndex = loadedContent.length;
+        const end = nextIndex + itemsPerLoad;
+        const newContent = getSong().slice(nextIndex, end);
         setLoadedContent((prevContent) => [...prevContent, ...newContent]);
     };
 
@@ -122,8 +122,9 @@ function LyricsLittleDucks(props) {
                 hasMore={loadedContent.length < totalDucks}
             >
                 {loadedContent}
+                {loadedContent.length === totalDucks && getFinal()}
             </InfiniteScroll>
-            {loadedContent.length === totalDucks && getFinal()}
+            {loadedContent.length < totalDucks && <h4>loading...</h4>}
         </div>
     );
 }
