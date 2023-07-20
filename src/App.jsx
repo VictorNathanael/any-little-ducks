@@ -63,11 +63,9 @@ function App() {
 
     return (
         <div className='App' id={theme}>
-            <header>
-                <div className='header-container'>
-                    <h1>Any Little Ducks</h1>
-                    <SwitchTheme theme={theme} setTheme={setTheme} />
-                </div>
+            <header className='header-container'>
+                <h1>Any Little Ducks</h1>
+                <SwitchTheme theme={theme} setTheme={setTheme} />
             </header>
             <div className='main-container'>
                 <span>Quantos patinhos foram passear?</span>
