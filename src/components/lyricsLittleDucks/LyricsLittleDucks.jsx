@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './LyricsLittleDucks.css';
 import extenso from 'extenso';
 import listWords from '../../list-words.json';
@@ -91,7 +91,7 @@ function LyricsLittleDucks(props) {
         );
     };
 
-    const getSong = useCallback(() => {
+    const getSong = useMemo(() => {
         const texts = [];
         for (let i = totalDucks; i > 0; i--) {
             texts.push(getVerseForNDucks(i));
@@ -102,7 +102,7 @@ function LyricsLittleDucks(props) {
 
     useEffect(() => {
         if (totalDucks > 0) {
-            const nextContent = getSong().slice(0, itemsPerLoad);
+            const nextContent = getSong.slice(0, itemsPerLoad);
             setLoadedContent(nextContent);
         }
     }, [getSong, totalDucks]);
@@ -110,7 +110,7 @@ function LyricsLittleDucks(props) {
     const loadMoreContent = () => {
         const nextIndex = loadedContent.length;
         const end = nextIndex + itemsPerLoad;
-        const newContent = getSong().slice(nextIndex, end);
+        const newContent = getSong.slice(nextIndex, end);
         setLoadedContent((prevContent) => [...prevContent, ...newContent]);
     };
 
@@ -120,11 +120,11 @@ function LyricsLittleDucks(props) {
                 dataLength={loadedContent.length}
                 next={loadMoreContent}
                 hasMore={loadedContent.length < totalDucks}
+                loader={<h4>loading...</h4>}
             >
                 {loadedContent}
                 {loadedContent.length === totalDucks && getFinal()}
             </InfiniteScroll>
-            {loadedContent.length < totalDucks && <h4>loading...</h4>}
         </div>
     );
 }
